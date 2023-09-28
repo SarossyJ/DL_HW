@@ -12,7 +12,7 @@ Related materials:
 
 # Tasks:
 - [ ] Setup git, Docker, envs
-- [ ] Setup Project
+- [x] Setup Project
 - [ ] Implement a basic training for a CNN on CIFAR-10
 
 # Notes

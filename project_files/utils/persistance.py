@@ -5,27 +5,27 @@
 import torch
 import pickle
 from typing import Any, Dict, Optional
+from py_utils import get_device
 
 # region torch model persistance
-def save_model(model) -> None:
+def save_model(model, file_path:str=None) -> None:
     """
     Save a PyTorch model to a file.
 
     Args:
         model (torch.nn.Module): The PyTorch model to be saved.
     """
-    torch.save(model.state_dict(), self.file_path)
+    torch.save(model.state_dict())
 
-def load_model(model, device=torch.device('cpu')) -> None:
+def load_model(model, file_path:str=None) -> None:
     """
     Load a PyTorch model from a file.
 
     Args:
         model (torch.nn.Module): The PyTorch model to be loaded into.
-        device (torch.device, optional): The device on which the model should be loaded.
-            Defaults to torch.device('cpu').
     """
-    model.load_state_dict(torch.load(self.file_path, map_location=device))
+    device = get_device()
+    model.load_state_dict(torch.load(file_path, map_location=device))
     model.to(device)
     model.eval()
 
@@ -74,7 +74,7 @@ class PickleHandler:
             data[key] = value
             self._save_data(data)
         else:
-            raise KeyError(f"Key '{key}' not found.")
+            raise KeyError(f"Key '{key}' not found!")
 
     def delete(self, key: str) -> None:
         """

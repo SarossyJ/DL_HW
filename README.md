@@ -11,9 +11,17 @@ Related materials:
 * **Difficulty: Medium**
 
 # Tasks:
-- [ ] Setup git, Docker, envs
 - [x] Setup Project
-- [ ] Implement a basic training for a CNN on CIFAR-10
+- [x] Setup git
+- [x] Setup figma
+- [ ] Setup Docker, envs
+
+- [ ] Transfer Learning handle
+- [ ] Dataset (CIFAR?) handle
+
+- [ ] Implement a basic training loop for a CNN on CIFAR-10
+- [ ] Implement Hyperparameter Search
+- [ ] Implement Visualization, metrics for models
 
 # Notes
 * Do not clutter up .gitignore if possible!

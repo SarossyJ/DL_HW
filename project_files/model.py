@@ -6,9 +6,9 @@ import torch.nn.functional as F
 import torchvision
 
 
-class SimpleModel(torch.nn.Module):
+class CNN(torch.nn.Module):
     def __init__(self):
-        super(SimpleModel, self).__init__()
+        super(CNN, self).__init__()
         self.fc = torch.nn.Linear(10, 5)
 
     def forward(self, x):

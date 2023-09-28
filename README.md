@@ -17,7 +17,7 @@ Related materials:
 - [ ] Setup Docker, envs
 
 - [ ] Transfer Learning handle
-- [ ] Dataset (CIFAR?) handle
+- [x] Dataset (CIFAR?) handle
 
 - [ ] Implement a basic training loop for a CNN on CIFAR-10
 - [ ] Implement Hyperparameter Search

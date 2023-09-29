@@ -29,7 +29,7 @@ def run_training(epoch_size:int=10, batch_size:int=64, lr:float=0.001):
     validation_loader = DataLoader(validation_set, batch_size=batch_size, shuffle=True, num_workers=2)
     test_loader =       DataLoader(test_set, batch_size=batch_size, shuffle=False, num_workers=2)
     
-    num_of_classes = training_set.classes
+    num_of_classes = len(training_set.classes)
 
     # Optimizer & loss function:
     criterion = nn.CrossEntropyLoss()

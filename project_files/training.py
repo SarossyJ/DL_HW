@@ -1,5 +1,5 @@
 # Functions to train a given model on a given dataset.
-# TODO All of this should be customizable, e.g loos_function should be a parameter.
+# TODO All of this should be customizable, e.g loss_function should be a parameter.
 # This is so hyperparameter search and other tasks can easily be achieved.
 
 from project_files.utils import logging
@@ -10,12 +10,13 @@ import torch.nn as nn
 import numpy as np
 
 from torchvision import transforms
+from torch.utils.data import DataLoader
 
 from project_files.data_handling import show_image, get_image_folder, get_CIFAR10_split
 from project_files.model import CNN
 from project_files.utils.py_utils import analyze, get_device
 
-def run_training():
+def run_training(epoch_size:int=10, batch_size:int=64, lr:float=0.001):
     # Data
     transform = transforms.Compose([
         transforms.ToTensor(),
@@ -23,26 +24,43 @@ def run_training():
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     ])
     training_set, validation_set, test_set = get_CIFAR10_split(transform)
+
+    train_loader =      DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=2)
+    validation_loader = DataLoader(validation_set, batch_size=batch_size, shuffle=True, num_workers=2)
+    test_loader =       DataLoader(test_set, batch_size=batch_size, shuffle=False, num_workers=2)
+    
     num_of_classes = training_set.classes
+
+    # Optimizer & loss function:
+    criterion = nn.CrossEntropyLoss()
+    optimizer = optim.SGD(net.parameters(), lr=lr, momentum=0.9)
 
     # Model init
     init_model = CNN(classes=num_of_classes)
 
     # Trained model
     print("BEGINNING OF TRAINING CYCLE")
-    model = training_cycle()
+    model = training_cycle(
+        init_model,
+        train_loader,
+        validation_loader,
+        num_epochs,
+        optimizer_fn,
+        loss_fn,
+        optimizer,
+        get_device()
+    )
     print("END OF TRAINING CYCLE")
 
     # Print metric
     accuracy = test_model(model)
     print("Accuracy of the trained model is {}.".format(accuracy))
 
-def training_cycle(model, train_loader, val_loader, num_epochs, optimizer_fn, loss_fn, get_device):
+def training_cycle(model, train_loader, val_loader, num_epochs, optimizer_fn, loss_fn, device):
     """
     Perform one full training cycle.
     """
     optimizer = optimizer_fn(model)
-    device = get_device()
     val_losses = []
 
     for epoch in range(num_epochs):

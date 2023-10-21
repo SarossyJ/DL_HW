@@ -5,7 +5,7 @@ Model Mavericks
 
 ## Name and neptun
 * Lakatos Bálint Gábor, T04ZVM
-* Hegedűs András, xxxxxx # TODO neptun
+* Hegedűs András, BCFU8E
 * Sárossy János, GUSXLY
 
 ## Task

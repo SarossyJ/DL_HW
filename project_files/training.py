@@ -25,7 +25,7 @@ def run_training(epoch_size:int=10, batch_size:int=64, lr:float=0.001):
     ])
     training_set, validation_set, test_set = get_CIFAR10_split(transform)
 
-    train_loader =      DataLoader(trainset, batch_size=batch_size, shuffle=True, num_workers=2)
+    train_loader =      DataLoader(training_set, batch_size=batch_size, shuffle=True, num_workers=2)
     validation_loader = DataLoader(validation_set, batch_size=batch_size, shuffle=True, num_workers=2)
     test_loader =       DataLoader(test_set, batch_size=batch_size, shuffle=False, num_workers=2)
     
@@ -33,7 +33,7 @@ def run_training(epoch_size:int=10, batch_size:int=64, lr:float=0.001):
 
     # Optimizer & loss function:
     criterion = nn.CrossEntropyLoss()
-    optimizer = optim.SGD(net.parameters(), lr=lr, momentum=0.9)
+    optimizer = torch.optim.SGD(net.parameters(), lr=lr, momentum=0.9)
 
     # Model init
     init_model = CNN(classes=num_of_classes)

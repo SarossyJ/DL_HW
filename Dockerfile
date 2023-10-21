@@ -1,20 +1,21 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8-slim-buster
+FROM python:3.9.12
 
-# Set the working directory in the container
-WORKDIR /app
+RUN apt-get update &&  \
+	apt install -y 
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+ENV HOME /home/model_mavericks
+RUN mkdir -p $HOME/project1
+WORKDIR $HOME/project1
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
-# Make port 80 available to the world outside this container
-EXPOSE 80
+COPY . .
 
-# Define environment variable
-ENV NAME World
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Run entrypoint.py when the container launches
-CMD ["python", "entrypoint.py"]
+RUN useradd -rm -d $HOME -s /bin/bash -g root -G sudo -u 1000 model_mavericks
+RUN echo 'model_mavericks:password' | chpasswd
+
+SHELL ["/bin/bash", "-l", "-c"]
+
+ENTRYPOINT python entrypoint.py 

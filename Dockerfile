@@ -4,8 +4,7 @@ RUN apt-get update &&  \
 	apt install -y 
 
 ENV HOME /home/model_mavericks
-RUN mkdir -p $HOME/project1
-WORKDIR $HOME/project1
+WORKDIR $HOME
 
 
 COPY . .

@@ -1,0 +1,20 @@
+services:
+  srserver:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: model_mavericks
+    container_name: test_container
+    volumes:
+      - .:/home/model_mavericks/
+    ports:
+      - "8899:8888"
+      - "2299:22"
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+          - driver: "nvidia"
+            capabilities: [ "gpu" ]
+            count: 1

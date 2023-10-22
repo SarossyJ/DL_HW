@@ -20,8 +20,10 @@ def get_CIFAR10_split(transform, valid_to_test_ratio = [.9, .1]):
     training_set =      CIFAR10('./data', train=True, transform=transform, download=True)
     validation_set =    CIFAR10('./data', train=False, transform=transform, download=True)
 
+    numofval = int(len(validation_set) * valid_to_test_ratio[0])
+    numoftest = len(validation_set) - numofval
     # Split validation_set into 2
-    validation_set, test_set = random_split(validation_set, valid_to_test_ratio)
+    validation_set, test_set = random_split(validation_set, [numofval, numoftest])
 
     return training_set, validation_set, test_set
 

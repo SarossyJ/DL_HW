@@ -22,7 +22,7 @@ Related materials:
 - [x] Setup Project
 - [x] Setup git
 - [x] Setup figma
-- [ ] Setup Docker, envs
+- [x] Setup Docker, envs
 
 - [ ] Transfer Learning handle
 - [x] Dataset (CIFAR?) handle
@@ -42,11 +42,13 @@ Related materials:
     * data_handling.py: data visualisation functionality
     * model.py: model definition
     * training.py: training related functionality
+* docker-compose.yml: docker compose file to build and run the specified docker image needed to run the project
 * Dockerfile: dockerfile to run the project in
 * entrypoint.py: entrypoint for the project
 * README.md: this document
 * requirements.txt: list of required packages to run the project
-* run_docker_commands.txt: necessary commands to run the project from a terminal
+* run_docker_commands.txt: necessary commands to run the project from a terminal in the predefined docker
+* milestone1.ipynb: python notebook demo for the first milestone
 
 # Notes
 * Do not clutter up .gitignore if possible!

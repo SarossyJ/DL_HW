@@ -31,12 +31,14 @@ def run_training(epoch_size:int=10, batch_size:int=64, lr:float=0.001):
     
     num_of_classes = len(training_set.classes)
 
-    # Optimizer & loss function:
-    criterion = nn.CrossEntropyLoss()
-    optimizer = torch.optim.SGD(net.parameters(), lr=lr, momentum=0.9)
-
     # Model init
     init_model = CNN(classes=num_of_classes)
+
+    # Optimizer & loss function:
+    criterion = nn.CrossEntropyLoss()
+    optimizer = torch.optim.SGD(init_model.parameters(), lr=lr, momentum=0.9)
+
+
 
     # Trained model
     print("BEGINNING OF TRAINING CYCLE")
@@ -44,10 +46,9 @@ def run_training(epoch_size:int=10, batch_size:int=64, lr:float=0.001):
         init_model,
         train_loader,
         validation_loader,
-        num_epochs,
-        optimizer_fn,
-        loss_fn,
+        200,
         optimizer,
+        criterion,
         get_device()
     )
     print("END OF TRAINING CYCLE")
@@ -60,7 +61,7 @@ def training_cycle(model, train_loader, val_loader, num_epochs, optimizer_fn, lo
     """
     Perform one full training cycle.
     """
-    optimizer = optimizer_fn(model)
+    optimizer = optimizer_fn(model, 0.001)
     val_losses = []
 
     for epoch in range(num_epochs):
@@ -77,7 +78,7 @@ def training_cycle(model, train_loader, val_loader, test_loader, num_epochs, opt
     One training cycle with the provided hyperparameters.
     """
     
-    optimizer = optimizer_fn(model.parameters())
+    optimizer = optimizer_fn(model, 0.001)
     device = get_device()
     val_losses = []
 

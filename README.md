@@ -48,6 +48,7 @@ Related materials:
 * README.md: this document
 * requirements.txt: list of required packages to run the project
 * run_docker_commands.txt: necessary commands to run the project from a terminal in the predefined docker
+* milestone1.ipynb: python notebook demo for the first milestone
 
 # Notes
 * Do not clutter up .gitignore if possible!

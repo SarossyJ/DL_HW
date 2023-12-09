@@ -1,4 +1,4 @@
-FROM pytorch/pytorch:2.0.0-cuda11.7-cudnn8-runtime
+FROM python:3.9.12
 
 RUN apt-get update &&  \
 	apt install -y  \
@@ -10,8 +10,8 @@ RUN apt-get update &&  \
 	byobu
 
 ENV HOME /home/model_mavericks
-RUN mkdir -p $HOME/project1
-WORKDIR $HOME/project1
+RUN mkdir -p $HOME/
+WORKDIR $HOME/
 
 
 COPY . .

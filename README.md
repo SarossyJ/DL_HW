@@ -26,8 +26,10 @@ Related materials:
 
 
 # Docker compose commands
-```docker-compose build
-docker-compose up```
+```
+docker-compose build
+docker-compose up
+```
 
 After running the commands follow one of the links provided by Docker compose. Make sure to change the port in the link, here is an example:
 Link by Docker compose:  http://127.0.0.1:8888/lab?token=38501eeaee198a0bfe30eb84f2442d222ea5e83ddd6cf707

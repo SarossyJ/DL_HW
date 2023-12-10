@@ -8,9 +8,6 @@ Model Mavericks
 * Hegedűs András, BCFU8E
 * Sárossy János, GUSXLY
 
-## Task
-The goal of this project is to **compare and demonstrate the advantages of using pretrained neural networks** vs randomly initialized ones for image classification. Build an image classification pipeline for a smaller dataset (e.g. CIFAR-10), and train both a randomly initialized and an ImageNet-pretrained network (e.g. ResNet) for the task. Compare their performance.
-
 ## Materials
 Related materials:
 * PyTorch implementation of a CIFAR-10 baseline model: [link to tutorial](https://lightning.ai/docs/pytorch/stable/notebooks/lightning_examples/cifar10-baseline.html)
@@ -18,39 +15,20 @@ Related materials:
 
 * **Difficulty: Medium**
 
-# Tasks:
-- [x] Setup Project
-- [x] Setup git
-- [x] Setup figma
-- [x] Setup Docker, envs
+# Project Structure
+- ssh: ssh for the docker container
+- docker-compose.yml: docker-compose file for the project
+- Dockerfile: Dockerfile for the project
+- README.md: this file
+- requirements.txt: requirements for the project
+- final_solution.ipynb: notebook for the final solution
+- Documentation of this project: https://docs.google.com/document/d/1aZPjF1LV8_ks7B9f8y-W7eW75CbB-CL5qIWb-sFwWss/edit
 
-- [ ] Transfer Learning handle
-- [x] Dataset (CIFAR?) handle
 
-- [ ] Implement a basic training loop for a CNN on CIFAR-10
-- [ ] Implement Hyperparameter Search
-- [ ] Implement Visualization, metrics for models
+# Docker compose commands
+```docker-compose build
+docker-compose up```
 
-# Files & structure
-* project_files: all the necessary files to run the project
-    * saved_models: directory to store the saved models
-    * tensorboard_runs: directory to store tensorboard_runs
-    * utils: directory to store python utilities related to the project
-        * logging.py: (in progress) logging mechanisms should be implemented here
-        * presistance.py: For classes and methods dealing with persisting items.
-        * py_utils.py: useful utility functions (eg. check if GPU is available)
-    * data_handling.py: data visualisation functionality
-    * model.py: model definition
-    * training.py: training related functionality
-* docker-compose.yml: docker compose file to build and run the specified docker image needed to run the project
-* Dockerfile: dockerfile to run the project in
-* entrypoint.py: entrypoint for the project
-* README.md: this document
-* requirements.txt: list of required packages to run the project
-* run_docker_commands.txt: necessary commands to run the project from a terminal in the predefined docker
-* milestone1.ipynb: python notebook demo for the first milestone
-
-# Notes
-* Do not clutter up .gitignore if possible!
-* Use comments, return typing, parameter typing for ease of developement.
-* Try to build and keep an orderly project.
+After running the commands follow one of the links provided by Docker compose. Make sure to change the port in the link, here is an example:
+Link by Docker compose:  http://127.0.0.1:8888/lab?token=38501eeaee198a0bfe30eb84f2442d222ea5e83ddd6cf707
+Link to check out the demo:  http://127.0.0.1:8899/lab?token=38501eeaee198a0bfe30eb84f2442d222ea5e83ddd6cf707

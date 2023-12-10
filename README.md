@@ -15,7 +15,7 @@ Related materials:
 
 * **Difficulty: Medium**
 
-# Project Structure
+## Project Structure
 - ssh: ssh for the docker container
 - docker-compose.yml: docker-compose file for the project
 - Dockerfile: Dockerfile for the project
@@ -25,7 +25,7 @@ Related materials:
 - Documentation of this project: https://docs.google.com/document/d/1aZPjF1LV8_ks7B9f8y-W7eW75CbB-CL5qIWb-sFwWss/edit
 
 
-# Docker compose commands
+## Docker compose commands
 ```
 docker-compose build
 docker-compose up

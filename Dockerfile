@@ -22,7 +22,7 @@ EXPOSE 8888
 
 
 RUN pip install --upgrade pip
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt --default-timeout=10000
 
 RUN useradd -rm -d $HOME -s /bin/bash -g root -G sudo -u 1000 model_mavericks
 RUN echo 'model_mavericks:password' | chpasswd

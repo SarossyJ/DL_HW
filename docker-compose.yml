@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     image: model_mavericks
     container_name: test_container
+    environment: 
+      JUPYTER_ALLOW_INSECURE_WRITES: 1
     volumes:
       - .:/home/model_mavericks/
     ports:

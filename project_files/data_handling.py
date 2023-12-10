@@ -15,10 +15,10 @@ def get_image_folder(path:str='', transform=ToTensor):
     """
     return ImageFolder(path, transform)
 
-def get_CIFAR10_split(transform, valid_to_test_ratio = [.9, .1]):
+def get_CIFAR10_split(train_transform, val_transform,valid_to_test_ratio = [.9, .1]):
     assert sum(valid_to_test_ratio) == 1, "Easier to give fractions that sum to 1. Ignore if not a problem."
-    training_set =      CIFAR10('./data', train=True, transform=transform, download=True)
-    validation_set =    CIFAR10('./data', train=False, transform=transform, download=True)
+    training_set =      CIFAR10('./data', train=True, transform=train_transform, download=True)
+    validation_set =    CIFAR10('./data', train=False, transform=val_transform, download=True)
 
     numofval = int(len(validation_set) * valid_to_test_ratio[0])
     numoftest = len(validation_set) - numofval
